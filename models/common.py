@@ -70,6 +70,9 @@ class Bert:
     def __init__(self):
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         self.model = BertModel.from_pretrained('bert-base-uncased')
+        # TODO: Make this parameterized
+        self.model.eval()
+        self.model.cuda()
 
     def get_embedding(self, sequence):
         """
@@ -82,7 +85,9 @@ class Bert:
                                                        add_special_tokens=True,
                                                        max_length=512,
                                                        truncation=True)).unsqueeze(0)
-        return self.model(input_ids)[1].data.numpy()
+        # TODO: Make this parameterized
+        input_ids = input_ids.cuda()
+        return self.model(input_ids)[1].cpu().detach().numpy()
 
     def extract(self, sentence):
         """
