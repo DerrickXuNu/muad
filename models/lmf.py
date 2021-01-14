@@ -85,7 +85,7 @@ class LMF(nn.Module):
 
         self.final_layer = nn.Sequential(
             nn.Linear(in_features, self.input_dim + self.input_text_dim),
-            #  nn.Tanh()
+            # nn.Tanh()
         )
 
     def reparameterize(self, mu: torch.Tensor, logvar: torch.Tensor) -> torch.Tensor:

@@ -4,7 +4,7 @@ Scripts used to train the unsupervised model
 """
 
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = "1"
+
 import torch
 import torch.optim.lr_scheduler as lr_scheduler
 
